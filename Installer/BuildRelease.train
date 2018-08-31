@@ -1,0 +1,198 @@
+//get version info from VersionInfo.ini
+var versionInfoIni = ini.fromFile("VersionInfo.ini");
+var appVersion = versionInfoIni.getValue("VersionInfo", "AppVersion", "1.0");
+var shortAppVersion = appVersion.substring(0, appVersion.lastIndexOf(".", appVersion.length - 1));
+
+//update the assembly versions for each .NET project using the above version info
+msbuild.updateAssemblyVersion("../LiquidHash.CoinApi/Properties/AssemblyInfo.cs", appVersion);
+msbuild.updateAssemblyVersion("../LiquidHash.ExchangeApi/Properties/AssemblyInfo.cs", appVersion);
+msbuild.updateAssemblyVersion("../LiquidHash.Blockchain/Properties/AssemblyInfo.cs", appVersion);
+msbuild.updateAssemblyVersion("../LiquidHash.Coinbase/Properties/AssemblyInfo.cs", appVersion);
+//msbuild.updateAssemblyVersion("../LiquidHash.CoinChoose/Properties/AssemblyInfo.cs", appVersion);
+msbuild.updateAssemblyVersion("../LiquidHash.CoinWarz/Properties/AssemblyInfo.cs", appVersion);
+msbuild.updateAssemblyVersion("../LiquidHash.Engine/Properties/AssemblyInfo.cs", appVersion);
+msbuild.updateAssemblyVersion("../LiquidHash.Win/Properties/AssemblyInfo.cs", appVersion);
+msbuild.updateAssemblyVersion("../LiquidHash.Update/Properties/AssemblyInfo.cs", appVersion);
+msbuild.updateAssemblyVersion("../LiquidHash.Xgminer/Properties/AssemblyInfo.cs", appVersion);
+msbuild.updateAssemblyVersion("../LiquidHash.Xgminer.Api/Properties/AssemblyInfo.cs", appVersion);
+msbuild.updateAssemblyVersion("../LiquidHash.Xgminer.Discovery/Properties/AssemblyInfo.cs", appVersion);
+msbuild.updateAssemblyVersion("../LiquidHash.MobileMiner/Properties/AssemblyInfo.cs", appVersion);
+//msbuild.updateAssemblyVersion("../LiquidHash.MobileMiner.Embed/Properties/AssemblyInfo.cs", appVersion);
+msbuild.updateAssemblyVersion("../LiquidHash.Stats/Properties/AssemblyInfo.cs", appVersion);
+msbuild.updateAssemblyVersion("../LiquidHash.Remoting/Properties/AssemblyInfo.cs", appVersion);
+msbuild.updateAssemblyVersion("../LiquidHash.Services/Properties/AssemblyInfo.cs", appVersion);
+msbuild.updateAssemblyVersion("../LiquidHash.Discovery/Properties/AssemblyInfo.cs", appVersion);
+msbuild.updateAssemblyVersion("../LiquidHash.Utility/Properties/AssemblyInfo.cs", appVersion);
+msbuild.updateAssemblyVersion("../LiquidHash.MultipoolApi/Properties/AssemblyInfo.cs", appVersion);
+msbuild.updateAssemblyVersion("../LiquidHash.NiceHash/Properties/AssemblyInfo.cs", appVersion);
+//msbuild.updateAssemblyVersion("../LiquidHash.WhatMine/Properties/AssemblyInfo.cs", appVersion);
+msbuild.updateAssemblyVersion("../LiquidHash.WhatToMine/Properties/AssemblyInfo.cs", appVersion);
+msbuild.updateAssemblyVersion("../LiquidHash.UX/Properties/AssemblyInfo.cs", appVersion);
+msbuild.updateAssemblyVersion("../LiquidHash.TUI/Properties/AssemblyInfo.cs", appVersion);
+msbuild.updateAssemblyVersion("../LiquidHash.Xgminer.Api.Client/Properties/AssemblyInfo.cs", appVersion);
+
+//rebuild each .NET project - Release configurations
+msbuild.rebuild("../LiquidHash.CoinApi/LiquidHash.CoinApi.csproj", { configuration: "Release" });
+msbuild.rebuild("../LiquidHash.ExchangeApi/LiquidHash.ExchangeApi.csproj", { configuration: "Release" });
+msbuild.rebuild("../LiquidHash.Coinbase/LiquidHash.Coinbase.csproj", { configuration: "Release" });
+msbuild.rebuild("../LiquidHash.Blockchain/LiquidHash.Blockchain.csproj", { configuration: "Release" });
+//msbuild.rebuild("../LiquidHash.CoinChoose/LiquidHash.CoinChoose.csproj", { configuration: "Release" });
+msbuild.rebuild("../LiquidHash.CoinWarz/LiquidHash.CoinWarz.csproj", { configuration: "Release" });
+msbuild.rebuild("../LiquidHash.Engine/LiquidHash.Engine.csproj", { configuration: "Release" });
+msbuild.rebuild("../LiquidHash.Utility/LiquidHash.Utility.csproj", { configuration: "Release" });
+msbuild.rebuild("../LiquidHash.Win/LiquidHash.Win.csproj", { configuration: "Release" });
+msbuild.rebuild("../LiquidHash.Update/LiquidHash.Update.csproj", { configuration: "Release" });
+msbuild.rebuild("../LiquidHash.Xgminer/LiquidHash.Xgminer.csproj", { configuration: "Release" });
+msbuild.rebuild("../LiquidHash.Xgminer.Api/LiquidHash.Xgminer.Api.csproj", { configuration: "Release" });
+msbuild.rebuild("../LiquidHash.Xgminer.Discovery/LiquidHash.Xgminer.Discovery.csproj", { configuration: "Release" });
+msbuild.rebuild("../LiquidHash.MobileMiner/LiquidHash.MobileMiner.csproj", { configuration: "Release" });
+//msbuild.rebuild("../LiquidHash.MobileMiner.Embed/LiquidHash.MobileMiner.Embed.csproj", { configuration: "Release" });
+msbuild.rebuild("../LiquidHash.Stats/LiquidHash.Stats.csproj", { configuration: "Release" });
+msbuild.rebuild("../LiquidHash.Remoting/LiquidHash.Remoting.csproj", { configuration: "Release" });
+msbuild.rebuild("../LiquidHash.Services/LiquidHash.Services.csproj", { configuration: "Release" });
+msbuild.rebuild("../LiquidHash.Discovery/LiquidHash.Discovery.csproj", { configuration: "Release" });
+msbuild.rebuild("../LiquidHash.MultipoolApi/LiquidHash.MultipoolApi.csproj", { configuration: "Release" });
+msbuild.rebuild("../LiquidHash.NiceHash/LiquidHash.NiceHash.csproj", { configuration: "Release" });
+//msbuild.rebuild("../LiquidHash.WhatMine/LiquidHash.WhatMine.csproj", { configuration: "Release" });
+msbuild.rebuild("../LiquidHash.WhatToMine/LiquidHash.WhatToMine.csproj", { configuration: "Release" });
+msbuild.rebuild("../LiquidHash.UX/LiquidHash.UX.csproj", { configuration: "Release" });
+msbuild.rebuild("../LiquidHash.TUI/LiquidHash.TUI.csproj", { configuration: "Release" });
+msbuild.rebuild("../LiquidHash.Xgminer.Api.Client/LiquidHash.Xgminer.Api.Client.csproj", { configuration: "Release" });
+
+//export environment variable for InnoSetup to use for app version
+export("MM_AppVersion", shortAppVersion);
+
+//build an InnoSetup installer
+inno.build("Installer.iss", { });
+
+//create a regular Zip release
+//only this contains the Update.exe as this is the only update package
+folder.remove("PF", true);
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.Win.exe", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.Win.pdb", "PF/");
+file.copy("../LiquidHash.Update/bin/Release/LiquidHash.Update.exe", "PF/");
+file.copy("../LiquidHash.Update/bin/Release/LiquidHash.Update.pdb", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.CoinApi.dll", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.CoinApi.pdb", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.ExchangeApi.dll", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.ExchangeApi.pdb", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.Blockchain.dll", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.Blockchain.pdb", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.Coinbase.dll", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.Coinbase.pdb", "PF/");
+//file.copy("../LiquidHash.Win/bin/Release/LiquidHash.CoinChoose.dll", "PF/");
+//file.copy("../LiquidHash.Win/bin/Release/LiquidHash.CoinChoose.pdb", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.CoinWarz.dll", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.CoinWarz.pdb", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.Engine.dll", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.Engine.pdb", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.Utility.dll", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.Utility.pdb", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.Xgminer.Api.dll", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.Xgminer.Api.pdb", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.Xgminer.Discovery.dll", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.Xgminer.Discovery.pdb", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.MobileMiner.dll", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.MobileMiner.pdb", "PF/");
+//file.copy("../LiquidHash.Win/bin/Release/LiquidHash.MobileMiner.Embed.dll", "PF/");
+//file.copy("../LiquidHash.Win/bin/Release/LiquidHash.MobileMiner.Embed.pdb", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.Stats.dll", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.Stats.pdb", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.Xgminer.dll", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.Xgminer.pdb", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.Remoting.dll", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.Remoting.pdb", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.Services.dll", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.Services.pdb", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.Discovery.dll", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.Discovery.pdb", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.MultipoolApi.dll", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.MultipoolApi.pdb", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.NiceHash.dll", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.NiceHash.pdb", "PF/");
+//file.copy("../LiquidHash.Win/bin/Release/LiquidHash.WhatMine.dll", "PF/");
+//file.copy("../LiquidHash.Win/bin/Release/LiquidHash.WhatMine.pdb", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.WhatToMine.dll", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.WhatToMine.pdb", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.UX.dll", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/LiquidHash.UX.pdb", "PF/");
+file.copy("../LiquidHash.TUI/bin/Release/LiquidHash.TUI.exe", "PF/");
+file.copy("../LiquidHash.TUI/bin/Release/LiquidHash.TUI.pdb", "PF/");
+file.copy("../LiquidHash.Xgminer.Api.Client/bin/Release/LiquidHash.Xgminer.Api.Client.exe", "PF/");
+file.copy("../LiquidHash.Xgminer.Api.Client/bin/Release/LiquidHash.Xgminer.Api.Client.pdb", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/Newtonsoft.Json.dll", "PF/");
+file.copy("../LiquidHash.Win/bin/Release/Renci.SshNet.dll", "PF/");
+zip.compress("Output/LiquidHash-" + shortAppVersion + ".zip", "PF/", "*.*", true);
+folder.remove("PF", true);
+
+//create Mac .app package (requires Mono, X11 to run)
+folder.remove("Output/LiquidHash.app", true);
+folder.remove("Output/LiquidHash.Win.app", true);
+var macPackPath = "C:/Program Files (x86)/Mono/lib/mono/4.5/macpack.exe";
+shell.exec(macPackPath, 
+
+"-o Output \
+-n LiquidHash.Win \
+-m winforms \
+-r \
+../LiquidHash.Win/bin/Release/LiquidHash.Win.pdb,\
+../LiquidHash.Win/bin/Release/LiquidHash.CoinApi.dll,\
+../LiquidHash.Win/bin/Release/LiquidHash.CoinApi.pdb,\
+../LiquidHash.Win/bin/Release/LiquidHash.ExchangeApi.dll,\
+../LiquidHash.Win/bin/Release/LiquidHash.ExchangeApi.pdb,\
+../LiquidHash.Win/bin/Release/LiquidHash.Blockchain.dll,\
+../LiquidHash.Win/bin/Release/LiquidHash.Blockchain.pdb,\
+../LiquidHash.Win/bin/Release/LiquidHash.Coinbase.dll,\
+../LiquidHash.Win/bin/Release/LiquidHash.Coinbase.pdb,\
+//../LiquidHash.Win/bin/Release/LiquidHash.CoinChoose.dll,\
+//../LiquidHash.Win/bin/Release/LiquidHash.CoinChoose.pdb,\
+../LiquidHash.Win/bin/Release/LiquidHash.CoinWarz.dll,\
+../LiquidHash.Win/bin/Release/LiquidHash.CoinWarz.pdb,\
+../LiquidHash.Win/bin/Release/LiquidHash.Engine.dll,\
+../LiquidHash.Win/bin/Release/LiquidHash.Engine.pdb,\
+../LiquidHash.Win/bin/Release/LiquidHash.Utility.dll,\
+../LiquidHash.Win/bin/Release/LiquidHash.Utility.pdb,\
+../LiquidHash.Win/bin/Release/LiquidHash.Xgminer.Api.dll,\
+../LiquidHash.Win/bin/Release/LiquidHash.Xgminer.Api.pdb,\
+../LiquidHash.Win/bin/Release/LiquidHash.Xgminer.Discovery.dll,\
+../LiquidHash.Win/bin/Release/LiquidHash.Xgminer.Discovery.pdb,\
+../LiquidHash.Win/bin/Release/LiquidHash.MobileMiner.dll,\
+../LiquidHash.Win/bin/Release/LiquidHash.MobileMiner.pdb,\
+../LiquidHash.Win/bin/Release/LiquidHash.Stats.dll,\
+../LiquidHash.Win/bin/Release/LiquidHash.Stats.pdb,\
+../LiquidHash.Win/bin/Release/LiquidHash.Xgminer.dll,\
+../LiquidHash.Win/bin/Release/LiquidHash.Xgminer.pdb,\
+../LiquidHash.Win/bin/Release/LiquidHash.Remoting.dll,\
+../LiquidHash.Win/bin/Release/LiquidHash.Remoting.pdb,\
+../LiquidHash.Win/bin/Release/LiquidHash.Services.dll,\
+../LiquidHash.Win/bin/Release/LiquidHash.Services.pdb,\
+../LiquidHash.Win/bin/Release/LiquidHash.Discovery.dll,\
+../LiquidHash.Win/bin/Release/LiquidHash.Discovery.pdb,\
+../LiquidHash.Win/bin/Release/LiquidHash.MultipoolApi.dll,\
+../LiquidHash.Win/bin/Release/LiquidHash.MultipoolApi.pdb,\
+../LiquidHash.Win/bin/Release/LiquidHash.NiceHash.dll,\
+../LiquidHash.Win/bin/Release/LiquidHash.NiceHash.pdb,\
+//../LiquidHash.Win/bin/Release/LiquidHash.WhatMine.dll,\
+//../LiquidHash.Win/bin/Release/LiquidHash.WhatMine.pdb,\
+../LiquidHash.Win/bin/Release/LiquidHash.WhatToMine.dll,\
+../LiquidHash.Win/bin/Release/LiquidHash.WhatToMine.pdb,\
+../LiquidHash.Win/bin/Release/LiquidHash.UX.dll,\
+../LiquidHash.Win/bin/Release/LiquidHash.UX.pdb,\
+../LiquidHash.TUI/bin/Release/LiquidHash.TUI.exe,\
+../LiquidHash.TUI/bin/Release/LiquidHash.TUI.pdb,\
+../LiquidHash.Xgminer.Api.Client/bin/Release/LiquidHash.Xgminer.Api.Client.exe,\
+../LiquidHash.Xgminer.Api.Client/bin/Release/LiquidHash.Xgminer.Api.Client.pdb,\
+../LiquidHash.Win/bin/Release/Newtonsoft.Json.dll,\
+../LiquidHash.Win/bin/Release/Renci.SshNet.dll \
+-i ../LiquidHash.Win/LiquidHash.icns \
+../LiquidHash.Win/bin/Release/LiquidHash.Win.exe");
+
+folder.move("Output/LiquidHash.Win.app", "Output/LiquidHash.app");
+
+file.copy("Launcher/LiquidHash.Win", "Output/LiquidHash.app/Contents/MacOS/LiquidHash.Win");
+
+//zip the .app package up
+zip.compress("Output/LiquidHash-" + shortAppVersion + ".app.zip", "Output/", "LiquidHash.app/*", true);
+
+//remove the .app package
+folder.remove("Output/LiquidHash.app", true);
